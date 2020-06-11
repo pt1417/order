@@ -22,9 +22,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Service
-public class MenuServiceImpl implements OrderService {
+public class OrderServiceImpl implements OrderService {
 	
-	private final Logger logger = LoggerFactory.getLogger(MenuServiceImpl.class);
+	private final Logger logger = LoggerFactory.getLogger(OrderServiceImpl.class);
 	
 	@Autowired
 	private OrderRepo orderRepo;
