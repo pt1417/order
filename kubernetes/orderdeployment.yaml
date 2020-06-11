@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orderdeployment
+spec:
+  selector:
+    matchLabels:
+      app: order
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: order
+    spec:
+      containers:
+      - image: us.icr.io/pt1417/orderservice:1.0
+        name: order
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9743
+        
+        env:
+          - name: menuservice.endpoint
+            valueFrom: 
+              configMapKeyRef:
+                name: ordercm
+                key: menuservice.endpoint            
+      
+        volumeMounts:
+        - name: ordervolume
+          mountPath: "/config"
+      restartPolicy: Always
+      volumes:
+      - name: ordervolume
+        configMap:
+          name: ordercm
+          items:
+          - key: application.properties 
+            path: application.properties
