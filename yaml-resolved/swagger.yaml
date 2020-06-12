@@ -1,0 +1,65 @@
+openapi: 3.0.0
+info:
+  title: Customer API
+  description: This API is used for Order
+  termsOfService: www.ibm.com
+  contact:
+    name: Paul
+    url: www.ibm.com
+    email: thaip@us.ibm.com
+  license:
+    name: IBM license
+    url: www.ibm.com
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/pt1417/thaip_Order/1.0.0
+  description: SwaggerHub API Auto Mocking
+- url: https://virtserver.swaggerhub.com/IBM8373/EMP_API_OAS3.0/1.0.0
+  description: SwaggerHub API Auto Mocking
+paths:
+  /order/order/{orderNumber}:
+    get:
+      summary: Get information about an order
+      description: Get order based on orderNumber
+      parameters:
+      - name: orderNumber
+        in: path
+        description: order information
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200'
+components:
+  schemas:
+    inline_response_200:
+      properties:
+        customerNumber:
+          type: string
+          example: CUST456
+        orderNumber:
+          type: string
+          example: ORDER123
+        orderMenuItems:
+          type: array
+          example:
+          - menuItemNumber: MENU-112
+            quantityOfMenuItem: 2
+            menuName: Salmon
+            price: 12.95
+          - m                "menuItemNumber": MENU554
+            quantityOfMenuItem: 1
+            menuName: Salad
+            ”               "price": 5.95
+        price:
+          type: number
+          example: 31.85
