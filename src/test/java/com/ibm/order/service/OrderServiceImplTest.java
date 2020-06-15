@@ -26,7 +26,7 @@ class OrderServiceImplTest {
 	private OrderRepo orderRepo;
 	
 	@InjectMocks
-	private OrderServiceImpl menuService;
+	private OrderServiceImpl orderSevice;
 	
 	@BeforeEach
 	public void init() {
@@ -49,7 +49,7 @@ class OrderServiceImplTest {
 		//when
 		when(orderRepo.findByOrderNumber(orderNumber)).thenReturn(mockedOrder);
 	
-		Order order = menuService.getOrder(orderNumber);
+		Order order = orderSevice.getOrder(orderNumber);
 		
 		//Then
 		assertNotNull(order, "order should not be null");

@@ -1,0 +1,55 @@
+openapi: 3.0.0
+info:
+  version: '1.0.0'
+  title: 'Order API'
+  description: 'This API is used for restaurant order'
+  termsOfService: www.ibm.com
+  contact:
+    name: Paul
+    url: www.ibm.com
+    email: thaip@us.ibm.com
+  license:
+    name: IBM license
+    url: www.ibm.com
+
+paths:
+  /order/order/{orderNumber}:
+    get:
+      summary: Get information about an order
+      description: Get order based on orderNumber
+      parameters:
+        - name: orderNumber
+          in: path
+          description: order information
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  properties:
+                    customerNumber:
+                      type: string
+                      example: CUST456
+                    orderNumber:
+                      type: string
+                      example: ORDER123
+                    orderMenuItems:
+                      type: array
+                      example: [{"menuItemNumber": "MENU-112","quantityOfMenuItem": 2,"menuName": "Salmon","price": 12.95},{m                "menuItemNumber": "MENU554","quantityOfMenuItem": 1,"menuName": "Salad",”               "price": 5.95}]
+                               
+                    price:
+                      type: number
+                      example: 31.85
+
+servers:
+# Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/pt1417/thaip_Order/1.0.0
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/IBM8373/EMP_API_OAS3.0/1.0.0
