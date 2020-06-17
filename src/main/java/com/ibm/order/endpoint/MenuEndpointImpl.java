@@ -26,7 +26,7 @@ public class MenuEndpointImpl implements MenuEndpoint {
 	
 	@Override
 	   @HystrixCommand(fallbackMethod = "getMenuItem_fallBack", commandKey = "endpointGetMenuItem", commandProperties = {
-	      @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000"),
+	      @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "2000"),
 	      @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "4"),
 	      @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "10000"),
 	      @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "75") })

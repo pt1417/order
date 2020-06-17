@@ -100,6 +100,7 @@ public class OrderServiceImpl implements OrderService {
 			orderMenuItems.add(orderMenuItem);
 			
 			orderPrice = orderPrice + menuItem.getPrice() * (orderInputMenuItem.getQuantityOfMenuItem());
+			
 			//remainingNumAvailable = menuItem.getNumAvailable() - orderInputMenuItem.getQuantityOfMenuItem();
 			//logger.info("!!!! remainingNumAvailable: " + remainingNumAvailable);
 			
